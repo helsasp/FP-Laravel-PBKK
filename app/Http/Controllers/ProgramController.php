@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Program;
+use App\Models\Program; //App\Models\Program;
 use Illuminate\Http\Request;
 
 class ProgramController extends Controller
@@ -12,7 +12,10 @@ class ProgramController extends Controller
      */
     public function index()
     {
-        return view('program/index');
+       // $programs = DB::table('programs')->get();
+        $programs = Program::all();
+        //return $programs;
+        return view('program.index', compact('programs'));
     }
 
     /**
