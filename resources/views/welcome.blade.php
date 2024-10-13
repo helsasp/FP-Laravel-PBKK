@@ -86,8 +86,8 @@
                 <div class="links">
                     <a href="/">Welcome</a>
                     <a href="/home">Home</a>
-                    <a href="">Edu Level</a>
-                    <a href="">Program</a>
+                    <a href="/edulevels">Edu Level</a>
+                    <a href="/programs">Program</a>
                     
                 </div>
             </div>
