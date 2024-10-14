@@ -28,11 +28,11 @@
 <div class="content mt-3">
     <div class="animated fadeIn">
 
-    @if (session('status'))
-    <div class = "alert alert-success">
-        {{session('status')}}
-    </div>
-    @endif
+        @if (session('status'))
+        <div class = "alert alert-success">
+            {{session('status')}}
+        </div>
+        @endif
 
         <div class="card">
             <div class="card-header">
@@ -53,7 +53,7 @@
                                 <th>No.</th>
                                 <th>Nama Program</th>
                                 <th>EduLevel</th>
-                                <th>Info</th>
+                                {{-- <th>Info</th> --}}
                                 <th></th>
                             </tr>
                         </thead>
@@ -63,8 +63,11 @@
                                 <td>{{ $loop->iteration}}</td>
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->edulevel->name }}</td>
-                                <td>{{ $item->info }}</td>
+                                {{-- <td>{{ $item->info }}</td> --}}
                                 <td class="text-center">
+                                    <a href="{{ url('programs/'.$item->id) }}" class="btn btn-primary btn-sm">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
                                     <a href="{{ url('programs/edit/'.$item->id) }}" class="btn btn-primary btn-sm">
                                         <i class="fa fa-pencil"></i>
                                     </a>
