@@ -3,11 +3,11 @@
 
 | Name           | NRP        | Kelas     |
 | ---            | ---        | ----------|
-|Helsa Sriprameswari Putri| 5025221154 |  (D) |
-| Nadia Evi Nathania | 5025221063 |  (D) |
+|Helsa Sriprameswari Putri| 5025221154 |  PBKK (D) |
+| Nadia Evi Nathania | 5025221063 |  PBKK (D) |
 
 ## Plan :
-1. Mmembuat views templating dengan bootstrap
+1. Membuat views templating dengan bootstrap
 2. Membuat database migration dan seeder edulevel
 3. Membuat CRUD pada edulevel
 4. Menerapkan eloquent ORM relationship di tabel edulevel dan program
@@ -29,7 +29,12 @@ php artisan serve
 ![image](https://github.com/user-attachments/assets/3cea6274-c00e-4c0e-99b7-c48972e51afa)
 
 ### Programs
-![image](https://github.com/user-attachments/assets/0199a71a-ad86-4324-a264-64a7a88ef57e)
+![image](https://github.com/user-attachments/assets/35be0030-31a6-45a1-ba99-8cd85fad725b)
+
+### Relationship
+
+![image](https://github.com/user-attachments/assets/dcf912a3-48ac-437d-a7fd-a8dfea5fffb2)
+
 
 
 ## Models
