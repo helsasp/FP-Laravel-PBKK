@@ -10,11 +10,57 @@
     <link rel="stylesheet" href="{{ asset('style/assets/css/normalize.css') }}">
     <link rel="stylesheet" href="{{ asset('style/assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('style/assets/css/font-awesome.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('styleassets/css/themify-icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('style/assets/css/themify-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('style/assets/css/flag-icon.min.css') }}">
     <link rel="stylesheet" href="{{ asset('style/assets/css/cs-skin-elastic.css') }}">
     <link rel="stylesheet" href="{{ asset('style/assets/scss/style.css') }}">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+
+    <style>
+        /* Purple theme styling */
+        body {
+            background-color: #f3e6ff;
+        }
+
+        .navbar-brand, .breadcrumb, .menu-icon, .navbar-nav a, .dropdown-menu p, .dropdown-item {
+            color: #6a0dad !important;
+        }
+
+        .navbar-header .navbar-toggler i,
+        .fa-tasks, .fa-dashboard, .fa-puzzle-piece {
+            color: #6a0dad;
+        }
+
+        .left-panel {
+            background-color: #d6b3ff;
+          
+        }
+
+        #right-panel {
+            background-color: #f9f2ff;
+        }
+
+        .page-title h1, .breadcrumb li.active i {
+            color: #6a0dad;
+        }
+
+        .btn-secondary {
+            background-color: #6a0dad;
+            border-color: #6a0dad;
+        }
+
+        .user-menu, .dropdown-menu {
+            background-color: #f3e6ff;
+        }
+
+        .user-avatar {
+            border: 2px solid #6a0dad;
+        }
+
+        .dropdown-item:hover {
+            background-color: #d6b3ff;
+        }
+    </style>
 </head>
 <body>
     
@@ -39,7 +85,7 @@
                         <a href="/home"> <i class="menu-icon fa fa-dashboard"></i>Home </a>
                     </li>
                     <li>
-                        <a href="/edulevels"> <i class="menu-icon fa fa-puzzle-piece"></i>Jenjang </a>
+                        <a href="/edulevels"> <i class="menu-icon fa fa-puzzle-piece"></i>Class Level </a>
                     </li>
                     <li>
                         <a href="/programs"> <i class="menu-icon fa fa-puzzle-piece"></i>Program </a>
@@ -121,9 +167,6 @@
         @yield('breadcrumbs')
 
         @yield('content')
-        
-
-       
     </div>    
 
 </body>

@@ -10,9 +10,6 @@ class EdulevelController extends Controller
     public function data() {
         $edulevels = DB::table('edulevels')->get();
 
-        //return $edulevels;
-       // return view('edulevel/data',['edulevels'=> $edulevels]);
-        //return view('edulevel.data',compact('edulevels'));
         return view('edulevel.data')->with('edulevels', $edulevels);
     }
 
@@ -27,7 +24,7 @@ class EdulevelController extends Controller
         'name'=> 'required|min:2',
         'desc'=> 'required',
     ],[
-        'name.required'=>'Nama jenjang tidak boleh kosong.'
+        'name.required'=>'Nama class level tidak boleh kosong.'
        ]);
 
        DB::table('edulevels')-> insert([
@@ -35,7 +32,7 @@ class EdulevelController extends Controller
         'desc' => $request->desc
        ]);
 
-       return redirect('edulevels')->with('status','Jenjang berhasil ditambah!');
+       return redirect('edulevels')->with('status','Class level berhasil ditambah!');
     }
 
     public function edit ($id) {
@@ -57,13 +54,13 @@ class EdulevelController extends Controller
             'name' => $request -> name,
             'desc' => $request->desc
         ]);
-        return redirect('edulevels')->with('status','Jenjang berhasil diupdate!');
+        return redirect('edulevels')->with('status','Class level berhasil diupdate!');
     }
 
     public function delete ($id)
     {
         DB::table('edulevels')-> where('id', $id)->delete();
-        return redirect('edulevels')->with('status', 'Jenjang berhasil dihapus!');
+        return redirect('edulevels')->with('status', 'Class level berhasil dihapus!');
     }
 
     

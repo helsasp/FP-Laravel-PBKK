@@ -1,13 +1,13 @@
 @extends('main')
 
-@section('title', 'Class Level')
+@section('title', 'Program')
 
 @section('breadcrumbs')
 <div class="breadcrumbs">
     <div class="col-sm-4">
         <div class="page-header float-left">
             <div class="page-title">
-                <h1>Class Level</h1>
+                <h1>Program</h1>
             </div>
         </div>
     </div>
@@ -15,7 +15,7 @@
         <div class="page-header float-right">
             <div class="page-title">
                 <ol class="breadcrumb text-right">
-                    <li><a href="">Class Level</a></li>
+                    <li><a href="">Program</a></li>
                     <li class="active">Data</li>
                 </ol>
             </div>
@@ -33,7 +33,7 @@
 
     .card {
         background-color: #ffffff; /* White card background */
-        border: 1px solid #d1c4e9; /* Softer purple border */
+        border: 1px solid #c8b4e0; /* Light purple border */
     }
 
     .table {
@@ -42,14 +42,14 @@
     }
 
     .table th {
-        background-color: #e1bee7; /* Softer purple header for the table */
-        color: #4a148c; /* Dark purple text */
+        background-color: #e1bee7; /* Light lavender header for the table */
+        color: #5d3a0e; /* Dark brown text */
         font-weight: bold;
     }
 
     .table td {
-        border: 1px solid #d1c4e9; /* Softer purple border */
-        color: #6a1b9a; /* Darker text for better contrast */
+        border: 1px solid #c8b4e0; /* Light purple border */
+        color: #4e3b31; /* Darker text for better contrast */
     }
 
     .btn-success {
@@ -73,19 +73,19 @@
 <div class="content mt-3">
     <div class="animated fadeIn">
 
-        @if (session('status'))
-        <div class="alert alert-success">
-            {{ session('status') }}
-        </div>
-        @endif
+    @if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+    @endif
 
         <div class="card">
             <div class="card-header">
                 <div class="pull-left">
-                    <strong>Data Class Level</strong>
+                    <strong>Data Program</strong>
                 </div>
                 <div class="pull-right">
-                    <a href="edulevels/add" class="btn btn-success btn-sm">
+                    <a href="programs/create" class="btn btn-success btn-sm">
                         <i class="fa fa-plus"></i> Add
                     </a>
                 </div>
@@ -95,37 +95,43 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>No</th>
-                                <th>Name</th>
-                                <th>Description</th>
+                                <th>No.</th>
+                                <th>Nama Program</th>
+                                <th>Class Level</th>
+                                <th>Info</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($edulevels as $item)
+                            @foreach($programs as $item)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->name }}</td>
-                                <td>{{ $item->desc }}</td>
-                                                        <td class="text-center">
-                            <div class="d-flex justify-content-center">
-                                <a href="{{ url('edulevels/edit/'.$item->id) }}" class="btn btn-primary btn-sm mx-1"> <!-- Increased margin-end -->
+                                <td>{{ $item->edulevel->name }}</td>
+                                <td>{{ $item->info }}</td>
+                                                            <td class="text-center d-flex justify-content-center">
+                                <a href="{{ url('programs/'.$item->id) }}" class="btn btn-dark btn-sm mx-1">
+                                    <i class="fa fa-eye"></i>
+                                </a>
+                                <a href="{{ url('programs/' . $item->id . '/edit') }}" class="btn btn-primary btn-sm mx-1">
                                     <i class="fa fa-pencil"></i>
                                 </a>
-                                <form action="{{ url('edulevels/'.$item->id) }}" method="post" class="d-inline" onsubmit="return confirm('Are you sure to delete this data?')">
-                                    @method('delete')
+                                <form action="{{ url('programs/'.$item->id) }}" method="post" class="d-inline" onsubmit="return confirm('Are you sure to delete this data?')">
+                                    @method('delete') 
                                     @csrf
                                     <button class="btn btn-danger btn-sm mx-1">
                                         <i class="fa fa-trash"></i>
                                     </button>
                                 </form>
-                            </div>
-                        </td>
+                            </td>
 
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
+                    <div class="pull-right">
+                        {{ $programs->links() }}
+                    </div>
                 </div>
             </div>
         </div>

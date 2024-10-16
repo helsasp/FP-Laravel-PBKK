@@ -1,13 +1,13 @@
 @extends('main')
 
-@section('title', 'Class level')
+@section('title', 'Program')
 
 @section('breadcrumbs')
 <div class="breadcrumbs">
     <div class="col-sm-4">
         <div class="page-header float-left">
             <div class="page-title">
-                <h1>Class level</h1>
+                <h1>Program</h1>
             </div>
         </div>
     </div>
@@ -15,7 +15,7 @@
         <div class="page-header float-right">
             <div class="page-title">
                 <ol class="breadcrumb text-right">
-                    <li><a href="">Class level</a></li>
+                    <li><a href="">Program</a></li>
                     <li class="active">Add</li>
                 </ol>
             </div>
@@ -41,9 +41,12 @@
         color: #ffffff; /* White text */
     }
 
+    .form-group label {
+        color: #4e3b31; /* Darker text for labels */
+    }
+
     .form-control {
         border-color: #ab47bc; /* Purple border for input fields */
-        color: #4e3b31; /* Darker text for better contrast */
     }
 
     .form-control.is-invalid {
@@ -65,10 +68,6 @@
         background-color: #e1bee7; /* Light alert background */
         color: #6a1b9a; /* Darker text for alert */
     }
-
-    .invalid-feedback {
-        color: #f44336; /* Red text for validation errors */
-    }
 </style>
 
 <div class="content mt-3">
@@ -76,10 +75,10 @@
         <div class="card">
             <div class="card-header">
                 <div class="pull-left">
-                    <strong>Add Class Level</strong>
+                    <strong>Tambah Program</strong>
                 </div>
                 <div class="pull-right">
-                    <a href="/edulevels" class="btn btn-secondary btn-sm">
+                    <a href="/programs" class="btn btn-secondary btn-sm">
                         <i class="fa fa-undo"></i> Back
                     </a>
                 </div>
@@ -87,19 +86,45 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-4 offset-md-4">
-                        <form action="/edulevels" method="post">
+                        <form action="/programs" method="post">
                             @csrf
                             <div class="form-group">
-                                <label>Nama Class Level</label>
+                                <label>Nama Program</label>
                                 <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" autofocus>
                                 @error('name')
                                 <div class="invalid-feedback"> {{ $message }} </div>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label>Keterangan</label>
-                                <textarea name="desc" class="form-control @error('desc') is-invalid @enderror">{{ old('desc') }}</textarea>
-                                @error('desc')
+                                <label>Class Level</label>
+                                <select name="edulevel_id" class="form-control @error('edulevel_id') is-invalid @enderror">
+                                    <option value="">- Pilih -</option>
+                                    @foreach($edulevels as $item)
+                                    <option value="{{ $item->id }}" {{ old('edulevel_id') == $item->id ? 'selected' : null }}>{{ $item->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('edulevel_id')
+                                <div class="invalid-feedback"> {{ $message }} </div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label>Harga Member</label>
+                                <input type="number" name="student_price" class="form-control @error('student_price') is-invalid @enderror" value="{{ old('student_price') }}">
+                                @error('student_price')
+                                <div class="invalid-feedback"> {{ $message }} </div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label>Maksimal Member</label>
+                                <input type="number" name="student_max" class="form-control @error('student_max') is-invalid @enderror" value="{{ old('student_max') }}">
+                                @error('student_max')
+                                <div class="invalid-feedback"> {{ $message }} </div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label>Info</label>
+                                <textarea name="info" class="form-control @error('info') is-invalid @enderror">{{ old('info') }}</textarea>
+                                @error('info')
                                 <div class="invalid-feedback"> {{ $message }} </div>
                                 @enderror
                             </div>
@@ -107,10 +132,7 @@
                         </form>
                     </div>
                 </div>
-
-                <div class="card-body table-responsive">
-                    <!-- Additional content can go here if needed -->
-                </div>
+                <div class="card-body table-responsive"></div>
             </div>
         </div>
     </div>
