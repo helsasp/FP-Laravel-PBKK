@@ -1,5 +1,5 @@
-# Final Project Laravel Pemrograman Berbasi Kerangka Kerja Kelompok 29
-# TutorIN - Unlock your coding potential 
+# Final Project Laravel Pemrograman Berbasis Kerangka Kerja Kelompok 29
+# TutorIN - Unlock Your Coding Potential 
 
 | Name           | NRP        | Kelas     |
 | ---            | ---        | ----------|
@@ -13,6 +13,10 @@
 4. Menerapkan eloquent ORM relationship di tabel edulevel dan program
 5. Membuat CRUD pada program
 6. Redesign UI dan pagination
+
+## Website Features
+1. User bisa menambahkan, mengedit, menghapus data class level.
+2. User bisa menambahkan, melihat lengkap, mengedit, dan menghapus data programs serta melihat nama class levelnya.
 
 ## Instalation
 ```
@@ -39,9 +43,71 @@ php artisan serve
 
 ## Models
 
+### Edulevel
+```
+public function programs()
+    {
+        return $this->hasMany(Program::class);
+    }
+```
+
+### Programs
+```
+public function edulevel()
+    {
+        return $this->belongsTo(Edulevel::class); 
+
+    }
+```
+Dalam model tersebut, terdaoat one to many relationship antara edulevel dan programs dimana suatu edulevel dapat memiliki banyak program.
+
 ## Views
 
+### Edulevel
+A. Add views : Views ini berfungsi untuk menambahkan data edulevel baru ke database. Dalam views ini, digunakan method post serta token csrf untuk menambahkan data.
+B. Data views : Views ini berfungsi untuk menamplikan semua data edulevels dengan menggunakan method post serta terdapat button delete dengan method delete untuk menghapus data. Tiap - tiap data dilakukan iterasi untuk ditampilkan masing - masing.
+C. Edit views : Views ini berfungsi untuk mengedit data lama dengan menginputkan data baru menggunakan method patch.
+
+### Programs
+
+
 ## Controller
+### Edulevels
+Terdapat beberapa fungsi yaitu : 
+```
+ public function data()
+public function add()
+public function addProcess(Request $request)
+public function edit ($id)
+ public function editProcess(Request $request, $id)
+public function delete ($id)
+
+```
+Fungsi data untuk menampilkan semua data edulevels. <br>
+Fungsi add dan addProcess untuk memproses data yang ditambahkan di edulevels. <br>
+Fungsi edit dan editProcess untuk memproses data yang diedit di edulevels. <br>
+Fungsi delete untuk menghapus data edulevels.<br>
+
+
+## Routes 
+```
+Route::get('/', function () {
+    return view('welcome',['title'=>'TutorIN: Unlock Your Coding Potential']);
+});
+
+Route::get('home', function () {
+    return view('home');
+});
+
+Route::get('edulevels', [EdulevelController::class, 'data']);
+Route::get('edulevels/add', [EdulevelController::class, 'add']);
+Route::post('edulevels', [EdulevelController::class, 'addProcess']);
+Route::get('edulevels/edit/{id}', [EdulevelController::class, 'edit']);
+Route::patch('edulevels/{id}', [EdulevelController::class, 'editProcess']);
+Route::delete('edulevels/{id}', [EdulevelController::class, 'delete']);
+
+Route::resource('programs', ProgramController::class);
+```
 
 ## Website Overview
 
