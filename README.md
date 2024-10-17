@@ -59,35 +59,38 @@ public function edulevel()
 
     }
 ```
-Dalam model tersebut, terdaoat one to many relationship antara edulevel dan programs dimana suatu edulevel dapat memiliki banyak program.
+Dalam model tersebut, terdapat one to many relationship antara edulevel dan programs dimana suatu edulevel dapat memiliki banyak program.
 
 ## Views
 
 ### Edulevel
-A. Add views : Views ini berfungsi untuk menambahkan data edulevel baru ke database. Dalam views ini, digunakan method post serta token csrf untuk menambahkan data.
-B. Data views : Views ini berfungsi untuk menamplikan semua data edulevels dengan menggunakan method post serta terdapat button delete dengan method delete untuk menghapus data. Tiap - tiap data dilakukan iterasi untuk ditampilkan masing - masing.
-C. Edit views : Views ini berfungsi untuk mengedit data lama dengan menginputkan data baru menggunakan method patch.
+A. Add view : View ini berfungsi untuk menambahkan data edulevel baru ke database. Dalam views ini, digunakan method post serta token csrf untuk menambahkan data.<br>
+B. Data view : View ini berfungsi untuk menamplikan semua data edulevels dengan menggunakan method post serta terdapat button delete dengan method delete untuk menghapus data. Tiap - tiap data dilakukan iterasi untuk ditampilkan masing - masing.<br>
+C. Edit view : View ini berfungsi untuk mengedit data lama dengan menginputkan data baru menggunakan method patch.<br>
 
 ### Programs
-
+A. Index view <br>
+B. Create view <br>
+C. Edit view <br>
+D. Show view <br>
 
 ## Controller
 ### Edulevels
 Terdapat beberapa fungsi yaitu : 
 ```
- public function data()
+public function data()
 public function add()
 public function addProcess(Request $request)
 public function edit ($id)
- public function editProcess(Request $request, $id)
+public function editProcess(Request $request, $id)
 public function delete ($id)
-
 ```
 Fungsi data untuk menampilkan semua data edulevels. <br>
 Fungsi add dan addProcess untuk memproses data yang ditambahkan di edulevels. <br>
 Fungsi edit dan editProcess untuk memproses data yang diedit di edulevels. <br>
 Fungsi delete untuk menghapus data edulevels.<br>
 
+### Programs 
 
 ## Routes 
 ```
@@ -105,7 +108,6 @@ Route::post('edulevels', [EdulevelController::class, 'addProcess']);
 Route::get('edulevels/edit/{id}', [EdulevelController::class, 'edit']);
 Route::patch('edulevels/{id}', [EdulevelController::class, 'editProcess']);
 Route::delete('edulevels/{id}', [EdulevelController::class, 'delete']);
-
 Route::resource('programs', ProgramController::class);
 ```
 
